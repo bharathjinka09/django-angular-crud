@@ -1,5 +1,6 @@
 <div class="container">
-  <h2>Create Movie</h2>
+  <h2 *ngIf="selectedMovie.id == -1">Create Movie</h2>
+  <h2 *ngIf="selectedMovie.id != -1">Update (or) Delete Movie</h2>
   Title
   <input class="form-control" type="text" [(ngModel)]="selectedMovie.title" />
   Description
@@ -29,7 +30,21 @@
     Delete
   </button>
   <hr />
-  <h2>List of movies</h2>
+  <h2>
+    List of movies
+    <span>
+      <p>(Click on the movie title to update or delete)</p>
+    </span>
+  </h2>
+  <button
+    *ngIf="selectedMovie.id != -1"
+    class="btn btn-sm btn-success"
+    (click)="createMovie()"
+  >
+    Create
+  </button>
+  <br />
+  <br />
   <ol>
     <li *ngFor="let movie of movies">
       <h4 style="cursor: pointer" (click)="movieClicked(movie)">

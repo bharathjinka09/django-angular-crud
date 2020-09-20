@@ -43,6 +43,9 @@ export class AppComponent {
     this.api.updateMovie(this.selectedMovie).subscribe(
       (data) => {
         this.getMovies();
+        this.selectedMovie.title = '';
+        this.selectedMovie.desc = '';
+        this.selectedMovie.year = '';
       },
       (error) => {
         console.log(error);
@@ -54,6 +57,9 @@ export class AppComponent {
     this.api.createMovie(this.selectedMovie).subscribe(
       (data) => {
         this.movies.push(data);
+        this.selectedMovie.title = '';
+        this.selectedMovie.desc = '';
+        this.selectedMovie.year = '';
       },
       (error) => {
         console.log(error);
@@ -64,6 +70,9 @@ export class AppComponent {
     this.api.deleteMovie(this.selectedMovie.id).subscribe(
       (data) => {
         this.getMovies();
+        this.selectedMovie.title = '';
+        this.selectedMovie.desc = '';
+        this.selectedMovie.year = '';
       },
       (error) => {
         console.log(error);
